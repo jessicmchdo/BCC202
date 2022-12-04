@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 void lerOrdem(int *ordem) {
+    getchar();
     scanf("%d", ordem);
 }
 
@@ -20,14 +21,15 @@ double **alocaMatriz(int ordem) {
 //manter como especificado
 void desalocaMatriz(double ***M, int ordem) {
     for(int i = 0; i < ordem; i++){
-        free(M[i]);
+        free((*M)[i]);
     }
-    free(M);
+    free(*M);
 }
 
 //manter como especificado
 void lerOperacao(char *operacao) {
-    printf("S ou M");
+    getchar();
+    printf("S ou M: ");
     scanf("%c", operacao);
 }
 
@@ -45,7 +47,7 @@ double somaMatriz(double **M, int ordem) {
 
     for(int i = 0; i< metade; i++){
         for(int j = 0; j < ordem; j++){
-            if( ((i =! j) && j < metade) && (i + j < ordem - 1)){
+            if( ((i =! j) && j < metade) && ((i + j) < (ordem - 1))){
                 soma = M[i][j];
             }
         }
